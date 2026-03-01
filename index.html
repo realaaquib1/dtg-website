@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dramaturgy Theatre Group</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+
+<style>
+
+/* ===== WhatsApp Floating Button ===== */
+.whatsapp-float{
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 25px;
+  right: 25px;
+  background: #25D366;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.4s ease;
+  animation: whatsappPulse 2s infinite;
+}
+
+/* Hover Effect */
+.whatsapp-float:hover{
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(37,211,102,0.8);
+}
+
+/* Pulse Animation */
+@keyframes whatsappPulse{
+  0%{
+    box-shadow: 0 0 0 0 rgba(37,211,102,0.6);
+  }
+  70%{
+    box-shadow: 0 0 0 15px rgba(37,211,102,0);
+  }
+  100%{
+    box-shadow: 0 0 0 0 rgba(37,211,102,0);
+  }
+}
+
+
+
+/* ===== Stage Performance Section ===== */
+
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: #fff;
+}
+
+.social-buttons{
+  display: flex;
+  flex-direction: column;   /* makes it vertical */
+  gap: 20px;
+  align-items: flex-start;  /* keeps them aligned nicely */
+}
+
+.stage-card img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  border-radius: 12px;
+}
+
+/* Hover Effect */
+.stage-card:hover {
+  transform: scale(1.15);
+  z-index: 10;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.stage-card:hover img {
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .stage-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .stage-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gallery-container{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 0 40px 60px;
+}
+
+.gallery-slider{
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.gallery-slider img{
+  width: 300px;
+  height: 350px;
+  object-fit: cover;
+  margin-right: 20px;
+  border-radius: 12px;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+/* Pop-up effect */
+.gallery-slider img:hover{
+  transform: scale(1.15);
+  z-index: 5;
+}
+
+/* Blur all images when hovering container */
+.gallery-slider:hover img{
+  filter: blur(5px);
+  opacity: 0.6;
+}
+
+/* Remove blur from hovered image */
+.gallery-slider img:hover{
+  filter: blur(0);
+  opacity: 1;
+}
+/* Arrows */
+.arrow{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border: none;
+  font-size: 30px;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.left{ left: 10px; }
+.right{ right: 10px; }
+
+.arrow:hover{
+  background: #e50914;
+}
+
+.gallery-slider-wrapper{
+  overflow: hidden;
+  width: 100%;
+}
+
+.gallery-slider{
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  position:relative;
+  transition:0.4s ease;
+}
+
+/* Blur & darken others when hovering */
+.gallery:hover .gallery-item{
+  filter:blur(5px) brightness(0.5);
+  transform:scale(0.95);
+  transition:0.4s ease;
+}
+
+.gallery-item{
+ position:relative;
+  overflow:hidden;
+  border-radius:12px;
+  transition:0.4s ease;
+  cursor:pointer;
+  z-index:1;
+}
+
+.gallery-item img{
+  width:100%;
+  height:350px;
+  object-fit:cover;
+  border-radius:12px;
+  transition:0.4s ease;
+}
+
+.gallery-item:hover{
+  filter:none !important;
+  transform:scale(1.12);
+  z-index:10;
+}
+
+/* Smooth Zoom Effect */
+.gallery-item:hover img{
+  box-shadow:0 40px 70px rgba(0,0,0,0.9);
+}
+
+/* Overlay */
+.overlay{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  padding:15px;
+  background:linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+  color:white;
+  opacity:0;
+  transition:0.3s ease;
+}
+
+.gallery-item:hover .overlay{
+  opacity:1;
+}
+
+.social-links{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+
+.social-btn{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:15px 30px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:500;
+  font-size:16px;
+  transition:0.4s ease;
+  position:relative;
+  color:white;
+  width:200px;   
+}
+
+/* Instagram */
+.instagram{
+  background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
+  box-shadow:0 0 15px rgba(255,0,150,0.4);
+}
+
+/* Facebook */
+.facebook{
+  background:#1877f2;
+  box-shadow:0 0 15px rgba(24,119,242,0.4);
+}
+
+/* YouTube */
+.youtube{
+  background:#ff0000;
+  box-shadow:0 0 15px rgba(255,0,0,0.4);
+}
+
+/* Hover Animation */
+.social-btn:hover{
+  transform:translateY(-5px) scale(1.05);
+  box-shadow:0 0 25px rgba(255,255,255,0.6);
+}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+
+.video-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:20px;
+}
+
+.video-card{
+  position:relative;
+  cursor:pointer;
+  overflow:hidden;
+  border-radius:10px;
+}
+
+.video-card img{
+  width:100%;
+  transition:0.4s;
+}
+
+.video-card:hover img{
+  transform:scale(1.05);
+}
+
+.play-btn{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:60px;
+  color:white;
+  background:rgba(0,0,0,0.6);
+  border-radius:50%;
+  padding:10px 20px;
+}
+
+.video-popup{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.9);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:2000;
+}
+
+.video-content{
+  position:relative;
+  width:90%;
+  max-width:800px;
+}
+
+/* Responsive 16:9 Aspect Ratio */
+.video-content iframe{
+  width:100%;
+  aspect-ratio:16/9;
+  border-radius:10px;
+}
+.close-btn{
+  position:absolute;
+  top:-40px;
+  right:0;
+  font-size:30px;
+  cursor:pointer;
+  color:white;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:#0f0f0f;
+  color:white;
+}
+
+/* NAVIGATION */
+/* ===== NEW RESPONSIVE NAVBAR ===== */
+
+nav{
+  position:fixed;
+  width:100%;
+  background:rgba(0,0,0,0.7);
+  backdrop-filter:blur(10px);
+  padding:10px 0;   /* Reduced from 15px */
+  z-index:1000;
+}
+
+.nav-container{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 10%;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+}
+.logo img{
+  height:40px;        /* Main control size */
+  max-height:50px;    /* Prevents overflow */
+  width:auto;
+  object-fit:contain;
+}
+
+/* Nav Links */
+.nav-links{
+  display:flex;
+  gap:25px;
+}
+
+.nav-links a{
+  color:white;
+  text-decoration:none;
+  font-weight:500;
+  transition:0.3s;
+}
+
+.nav-links a:hover{
+  color:#e50914;
+}
+
+/* Hamburger */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  cursor:pointer;
+  gap:6px;
+}
+
+.hamburger span{
+  width:25px;
+  height:3px;
+  background:white;
+  transition:0.3s;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+
+/* Show one image at a time on mobile */
+.gallery-slider img{
+  width:100%;
+  height:300px;
+  margin-right:0;
+}
+
+.gallery-slider-wrapper{
+  overflow:hidden;
+}
+
+.gallery-slider{
+  gap:0;
+}
+
+.video-content{
+    width:95%;
+  }
+
+  .nav-links{
+    position:absolute;
+    top:70px;
+    right:0;
+    width:100%;
+    background:rgba(0,0,0,0.95);
+    flex-direction:column;
+    align-items:center;
+    padding:30px 0;
+    gap:20px;
+    display:none;
+  }
+
+  .nav-links.active{
+    display:flex;
+  }
+
+  .hamburger{
+    display:flex;
+  }
+}
+
+/* HERO */
+.hero{
+  position:relative;
+  min-height:100vh;
+  height:auto;
+  padding:120px 20px;
+  background:url('theatre-bg.jpg') top center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
+}
+
+/* Dark overlay */
+.hero::before{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.85);
+  z-index:1;
+}
+
+/* Spotlight effect */
+.spotlight{
+  position:absolute;
+  width:600px;
+  height:600px;
+  background:radial-gradient(circle, rgba(255,255,200,0.4) 0%, rgba(255,255,200,0.1) 40%, transparent 70%);
+  border-radius:50%;
+  animation:moveLight 8s infinite alternate ease-in-out;
+  z-index:2;
+}
+
+/* Text above everything */
+.hero-content{
+  position:relative;
+  z-index:3;
+  animation:fadeUp 1.5s ease forwards;
+  opacity:0;
+}
+
+.hero h1{
+  font-size: clamp(36px, 6vw, 70px);
+  font-family:'Playfair Display', serif;
+  letter-spacing:2px;
+  text-shadow:0 10px 30px rgba(0,0,0,0.8);
+}
+.logo img{
+    height:32px;
+  }
+
+.hero p{
+  margin-top:10px;
+  font-size:20px;
+}
+
+/* Animation */
+@keyframes moveLight{
+  0%{
+    transform:translate(-40%, -30%);
+  }
+  50%{
+    transform:translate(30%, 10%);
+  }
+  100%{
+    transform:translate(-20%, 40%);
+  }
+}
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.hero p{
+  margin-top:10px;
+  font-size:20px;
+}
+
+/* SECTION */
+section{
+  padding:80px 10%;
+}
+
+h2{
+  text-align:center;
+  margin-bottom:40px;
+  font-family:'Playfair Display',serif;
+  font-size:36px;
+  color:#e50914;
+}
+
+/* GALLERY */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:15px;
+}
+
+.gallery img{
+  width:100%;
+  cursor:pointer;
+  transition:0.4s;
+  border-radius:8px;
+}
+
+.gallery img:hover{
+  transform:scale(1.05);
+}
+
+/* LIGHTBOX */
+.lightbox{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.9);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+
+.lightbox img{
+  max-width:80%;
+  max-height:80%;
+}
+
+/* VIDEOS */
+.videos{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:20px;
+}
+
+iframe{
+  width:100%;
+  height:250px;
+  border-radius:8px;
+}
+
+/* SOCIAL */
+.social{
+  text-align:center;
+}
+
+.social a{
+  color:white;
+  margin:0 15px;
+  font-size:20px;
+  text-decoration:none;
+}
+
+/* FORM */
+form{
+  max-width:600px;
+  margin:auto;
+  display:flex;
+  flex-direction:column;
+}
+
+form input, form textarea{
+  padding:12px;
+  margin-bottom:15px;
+  border:none;
+  border-radius:5px;
+}
+
+form button{
+  padding:12px;
+  background:#e50914;
+  color:white;
+  border:none;
+  cursor:pointer;
+  font-size:16px;
+  border-radius:5px;
+}
+
+form button:hover{
+  background:#b20710;
+}
+
+.success{
+  text-align:center;
+  margin-top:10px;
+  color:lightgreen;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero h1{
+    font-size:40px;
+  }
+}
+
+/* ===== PROFESSIONAL FOOTER WITH ANIMATED GLOW ===== */
+footer{
+  position:relative;
+  background:#111;
+  padding:60px 10% 30px;
+  margin-top:60px;
+  overflow:hidden;
+}
+
+/* Moving Glow Line */
+footer::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-50%;
+  width:200%;
+  height:4px;
+  background:linear-gradient(90deg,transparent,#e50914,#ff2a2a,#e50914,transparent);
+  animation:footerGlow 4s linear infinite;
+}
+
+/* Soft Red Ambient Glow */
+footer::after{
+  content:"";
+  position:absolute;
+  bottom:-80px;
+  left:50%;
+  transform:translateX(-50%);
+  width:600px;
+  height:200px;
+  background:radial-gradient(circle, rgba(229,9,20,0.25), transparent 70%);
+  filter:blur(80px);
+  opacity:0.6;
+  pointer-events:none;
+}
+
+@keyframes footerGlow{
+  0%{transform:translateX(0);}
+  100%{transform:translateX(50%);}
+}
+
+.footer-container{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:40px;
+}
+
+.footer h3{
+  margin-bottom:20px;
+  color:#e50914;
+}
+
+.footer p,.footer a{
+  color:#ccc;
+  text-decoration:none;
+  font-size:14px;
+  line-height:1.8;
+  transition:0.3s;
+}
+
+.footer a:hover{
+  color:#e50914;
+}
+
+.footer-map iframe{
+  width:100%;
+  height:250px;
+  border-radius:10px;
+  border:none;
+}
+
+.footer-bottom{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  margin-top:40px;
+  padding-top:20px;
+  border-top:1px solid #333;
+  font-size:14px;
+  color:#777;
+}
+
+html, body{
+  background:#0f0f0f !important;
+  color:white;
+}
+/* ===== HERO MOBILE BACKGROUND FIX ===== */
+@media (max-width:768px){
+  .hero{
+    background:url('theatre-bg-mobile.jpg') center center/cover no-repeat;
+    background-attachment:scroll;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-container">
+    <div class="logo">
+  <img src="logo.png" alt="Dramaturgy Theatre Group Logo">
+</div>
+
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#home" onclick="closeMenu()">Home</a>
+      <a href="#about" onclick="closeMenu()">About</a>
+      <a href="#gallery" onclick="closeMenu()">Gallery</a>
+      <a href="#plays" onclick="closeMenu()">Plays</a>
+      <a href="#contact" onclick="closeMenu()">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="spotlight"></div>
+  <div class="hero-content">
+    <h1>Dramaturgy Theatre Group</h1>
+    <p>Where Stories Come Alive</p>
+  </div>
+</section>
+<!-- ABOUT -->
+<section id="about">
+  <h2>About Us</h2>
+  <p style="text-align:center; max-width:700px; margin:auto;">
+    Dramaturgy Theatre Group is a premier destination for theatre enthusiasts in Laxmi Nagar, Delhi. Established in 2014, the company offers a diverse range of enriching Acting Classes activities for individuals of all ages. With passionate instructors who are experts in their fields, Dramaturgy Theatre Group prides itself on providing a supportive and friendly learning environment that encourages creativity and exploration.
+  </p>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <h2 class="section-title">Stage Performances</h2>
+<div class="gallery-container">
+  <button class="arrow left" onclick="moveSlide(-1)">❮</button>
+
+  <div class="gallery-slider-wrapper">
+    <div class="gallery-slider" id="slider">
+      <img src="stage1.jpg">
+      <img src="stage2.jpg">
+      <img src="stage3.jpg">
+      <img src="stage4.jpg">
+      <img src="stage5.jpg">
+      <img src="stage6.jpg">
+      <img src="stage7.jpg">
+      <img src="stage8.jpg">
+      <img src="stage9.jpg">
+      <img src="stage10.jpg">
+    </div>
+  </div>
+
+  <button class="arrow right" onclick="moveSlide(1)">❯</button>
+</div>
+  
+</section>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img">
+</div>
+
+<!-- PLAYS -->
+<section id="plays">
+  <h2>Our Plays</h2>
+
+  <div class="video-grid">
+
+    <!-- Video 1 -->
+    <div class="video-card" onclick="openVideo('SZqar798bgI')">
+      <img src="https://img.youtube.com/vi/SZqar798bgI/maxresdefault.jpg">
+      <div class="play-btn">▶</div>
+    </div>
+
+    <!-- Video 2 -->
+    <div class="video-card" onclick="openVideo('7tceA7PWJEo')">
+      <img src="https://img.youtube.com/vi/7tceA7PWJEo/maxresdefault.jpg">
+      <div class="play-btn">▶</div>
+    </div>
+
+    <!-- Video 3 -->
+    <div class="video-card" onclick="openVideo('Ndd7AuZdXoU')">
+      <img src="https://img.youtube.com/vi/Ndd7AuZdXoU/maxresdefault.jpg">
+      <div class="play-btn">▶</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Video Popup -->
+<div class="video-popup" id="videoPopup">
+  <div class="video-content">
+    <span class="close-btn" onclick="closeVideo()">✖</span>
+    <iframe id="popupVideo" allowfullscreen></iframe>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Enquiry Form</h2>
+  <form id="contact-form">
+    <input type="text" name="name" placeholder="Your Name" required>
+
+<input type="email" name="email" placeholder="Your Email" required>
+
+<input type="tel" name="phone" placeholder="Your Mobile Number"
+       required pattern="[6-9]{1}[0-9]{9}" maxlength="10">
+
+<input type="text" name="subject" placeholder="Subject" required>
+
+<textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <div id="form-error" style="color:#ff4d4d; margin:10px 0; font-size:14px;"></div>
+    <button type="submit">Send Enquiry</button>
+    <div class="success" id="success-message"></div>
+  </form>
+</section>
+
+<script>
+
+function openVideo(videoId){
+  window.open("https://www.youtube.com/watch?v=" + videoId, "_blank");
+}
+
+function closeVideo(){
+  document.getElementById("videoPopup").style.display="none";
+  document.getElementById("popupVideo").src="";
+}
+// LIGHTBOX
+function openLightbox(src){
+  document.getElementById('lightbox').style.display="flex";
+  document.getElementById('lightbox-img').src=src;
+}
+function closeLightbox(){
+  document.getElementById('lightbox').style.display="none";
+}
+
+document.getElementById("contact-form").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  let name = this.name.value.trim();
+  let email = this.email.value.trim();
+  let phone = this.phone.value.trim();
+  let subject = this.subject.value.trim();
+  let message = this.message.value.trim();
+
+  let errorDiv = document.getElementById("form-error");
+  errorDiv.innerText = "";
+
+  // ✅ Email validation
+  let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+  if(!emailPattern.test(email)){
+    errorDiv.innerText = "Please enter a valid email address.";
+    return;
+  }
+
+  // ✅ Indian mobile validation (10 digits, starts 6-9)
+  let phonePattern = /^[6-9]\d{9}$/;
+
+  if(!phonePattern.test(phone)){
+    errorDiv.innerText = "Please enter a valid 10-digit mobile number.";
+    return;
+  }
+
+  let whatsappNumber = "918287862423";
+
+  let whatsappMessage =
+  "New Enquiry - Dramaturgy Theatre Group\n\n" +
+  "Name: " + name + "\n" +
+  "Email: " + email + "\n" +
+  "Phone: " + phone + "\n" +
+  "Subject: " + subject + "\n" +
+  "Message: " + message;
+
+  let encodedMessage = encodeURIComponent(whatsappMessage);
+
+  window.open("https://wa.me/" + whatsappNumber + "?text=" + encodedMessage, "_blank");
+
+  this.reset();
+});
+
+const slider = document.getElementById("slider");
+let images = slider.children;
+let index = 0;
+let imageWidth = slider.children[0].clientWidth;
+let isTransitioning = false;
+
+/* Clone first 3 images for infinite loop */
+for(let i = 0; i < 3; i++){
+  let clone = images[i].cloneNode(true);
+  slider.appendChild(clone);
+}
+
+/* Arrow Control */
+function moveSlide(direction){
+  if(isTransitioning) return;
+  isTransitioning = true;
+
+  index += direction;
+  slider.style.transition = "transform 0.5s ease-in-out";
+  imageWidth = slider.children[0].clientWidth;
+slider.style.transform = `translateX(-${index * imageWidth}px)`;
+
+  setTimeout(()=>{
+    if(index >= images.length - 3){
+      slider.style.transition = "none";
+      index = 0;
+      slider.style.transform = `translateX(0px)`;
+    }
+
+    if(index < 0){
+      slider.style.transition = "none";
+      index = images.length - 4;
+      slider.style.transform = `translateX(-${index * imageWidth}px)`;
+    }
+
+    isTransitioning = false;
+  },500);
+}
+
+/* Swipe Support */
+let startX = 0;
+
+slider.addEventListener("touchstart", e=>{
+  startX = e.touches[0].clientX;
+});
+
+slider.addEventListener("touchend", e=>{
+  let endX = e.changedTouches[0].clientX;
+  let diff = startX - endX;
+
+  if(diff > 50){
+    moveSlide(1);
+  } else if(diff < -50){
+    moveSlide(-1);
+  }
+});
+
+/* ===== MOBILE NAVBAR ===== */
+
+function toggleMenu(){
+  document.getElementById("navLinks").classList.toggle("active");
+}
+
+function closeMenu(){
+  document.getElementById("navLinks").classList.remove("active");
+}
+
+</script>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- Contact Info -->
+    <div>
+      <h3>Contact Us</h3>
+      <p>
+        Metro Station Laxmi Nagar, B/25, Station,<br>
+        Opposite Jain Mandir, near Pillar Number 43,<br>
+        Subhash Chowk, Block G,<br>
+        Laxmi Nagar, New Delhi, Delhi 110092
+      </p>
+      <p>📞 <a href="tel:08287862423">082878 62423</a></p>
+    </div>
+
+    <!-- Social Media-->
+    <div>
+      <h3>Follow Us</h3>
+	<div class="social-buttons">
+      <p><a href="https://www.instagram.com/dramaturgy_theatre_group/" 
+       target="_blank" 
+       class="social-btn instagram">
+       <i class="fab fa-instagram"></i> Instagram
+    </a></p>
+      <p><a href="https://www.facebook.com/Dramaturgytheatre/" 
+       target="_blank" 
+       class="social-btn facebook">
+       <i class="fab fa-facebook-f"></i> Facebook
+    </a>
+</p>
+      <p><a href="https://www.youtube.com/@dramaturgytheatregroup3540" 
+       target="_blank" 
+       class="social-btn youtube">
+       <i class="fab fa-youtube"></i> YouTube
+    </a></p>
+</div>
+     </div>
+
+    <!-- Map -->
+    <div class="footer-map">
+      <h3>Find Us</h3>
+      <iframe 
+        src="https://www.google.com/maps?q=28.6338555,77.2810093&z=17&output=embed"
+        loading="lazy">
+      </iframe>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Dramaturgy Theatre Group | All Rights Reserved | Designed by <a href="https://www.instagram.com/realaaquib/" target="_blank">Aaquib</a></div>
+</footer>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/918287862423" 
+   class="whatsapp-float" 
+   target="_blank">
+   <i class="fab fa-whatsapp"></i>
+</a>
+</body>
+</html>
